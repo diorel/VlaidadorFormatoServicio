@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
-using System.Drawing;
-using System.IO;
-using System.Drawing.Imaging;
-
-using FormatValidatorService.Funcionalidades;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Net.Http.Headers;
+﻿using Microsoft.Cognitive.CustomVision.Prediction;
+using Microsoft.Cognitive.CustomVision.Training;
+using Microsoft.Cognitive.CustomVision.Training.Models;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace FormatValidatorService
+
+
+namespace FormatValidatorService.Funcionalidades
 {
-   public class ServiceFormatValidator : IServiceFormatValidator
+    public class CustomVision
     {
 
         public class Consulta
@@ -38,7 +37,6 @@ namespace FormatValidatorService
 
 
 
-
         static byte[] GetImageAsByteArray(string imageFilePath)
         {
             FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
@@ -48,9 +46,12 @@ namespace FormatValidatorService
 
 
 
-
         public async Task<string> ValidarFormato(string imageFilePath)
         {
+
+
+
+
             var client = new HttpClient();
 
             // Solicitar encabezados: reemplace esta clave de ejemplo con su clave de suscripción válida.
@@ -119,82 +120,6 @@ namespace FormatValidatorService
 
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //public string VerificarIfe(string Foto)
-        //{
-
-        //    // crear un objeto imagen desde archivo
-
-        //    Image imagen = Image.FromFile(@"C:\Foto\Gundam1.jpg");
-
-        //    // Crar Un MemoryStream
-
-        //    var ms = new MemoryStream();
-
-        //    // salvar los bytes  en ms
-
-        //    imagen.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-        //    // Obtenr los bytes
-
-        //    var bytes = ms.ToArray();
-
-        //    var imageMemoryStream = new MemoryStream(bytes);
-
-        //    Image imgFormStream = Image.FromStream(imageMemoryStream);
-
-        //    try
-        //    {
-
-        //        //imgFormStream.Save(@"C:\Users\rcortes\Documents\GitHub\VlaidadorFormatoServicio\FormatValidatorService\FormatValidatorService\Foto\\Gundam2.jpg", ImageFormat.Jpeg);
-
-
-        //       // string ruta = (@"C:\Users\rcortes\Documents\GitHub\VlaidadorFormatoServicio\FormatValidatorService\FormatValidatorService\Foto\Gundam2.jpg");
-
-        //        CustomVision obj = new CustomVision();
-
-
-        //        await obj.ValidarFormato("C:\\Users\rcortes\\Documents\\GitHub\\VlaidadorFormatoServicio\\FormatValidatorService\\FormatValidatorService\\Foto\\Gundam2.jpg");
-
-
-             
-
-            
-
-        //     }
-        //    catch (Exception ex)
-        //    {
-        //        System.Diagnostics.Debug.WriteLine(ex.Message);
-        //    }
-
-        //    return null;
-        //}
-
 
     }
 }

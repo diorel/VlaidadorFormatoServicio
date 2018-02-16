@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FormatValidatorService
 {
@@ -11,8 +12,16 @@ namespace FormatValidatorService
     [ServiceContract]
     public interface IServiceFormatValidator
     {
+        //[OperationContract]
+        //string VerificarIfe(string Foto);
+
+
         [OperationContract]
-        string VerificarIfe(string Foto);
+        Task<string> ValidarFormato(string imageFilePath);
+
+
+        
+
     }
  
 }
