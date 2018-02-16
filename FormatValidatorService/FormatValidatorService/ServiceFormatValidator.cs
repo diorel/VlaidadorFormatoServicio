@@ -49,9 +49,44 @@ namespace FormatValidatorService
 
 
 
-        public async Task<string> ValidarFormato(string imageFilePath)
+        public async Task<string> ValidarFormatoINE(string imageFilePath)
         {
             var client = new HttpClient();
+
+
+             // crear un objeto imagen desde archivo
+            Image imagen = Image.FromFile(@"C:\Foto\Gundam1.jpg");
+
+            // Crar Un MemoryStream
+            var ms = new MemoryStream();
+
+            // salvar los bytes  en ms
+
+            imagen.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+
+
+            //-------------------------- Inicia Evaluacion
+            // Se obmtine los bytes ys e guarda en la varianble  "bytes"
+
+
+            // Obtenr los bytes
+            // descomentar para recivir imagen en bytes 
+            // var bytes = imageFilePath;
+
+            var bytes = ms.ToArray();
+      
+            var imageMemoryStream = new MemoryStream(bytes);
+           
+            Image imgFormStream = Image.FromStream(imageMemoryStream);
+
+
+            //imgFormStream.Save(@"C:\Users\rcortes\Documents\GitHub\VlaidadorFormatoServicio\FormatValidatorService\FormatValidatorService\Images\Identification\ImgScan.jpg", ImageFormat.Jpeg);
+
+            imgFormStream.Save(@"..\..\Images\Identification\ImgScan.jpg", ImageFormat.Jpeg);
+
+
+
 
             // Solicitar encabezados: reemplace esta clave de ejemplo con su clave de suscripción válida.
             client.DefaultRequestHeaders.Add("Prediction-Key", "559018cc3d434cef8095da2e8b8dd30c");
@@ -86,7 +121,7 @@ namespace FormatValidatorService
                 string NumeroCadena = Descripcion1.Remove(4, 8);
 
                 string Descripcion2 = (from cust in model.Predictions
-                                       where cust.Tag == "scaner"
+                                       where cust.Tag == "internet"
                                        select cust.Probability.ToString()).FirstOrDefault();
                 string NumeroCadena2 = Descripcion1.Remove(4, 8);
 
@@ -101,7 +136,6 @@ namespace FormatValidatorService
 
                 string aprobada = "true";
                 string rechazada = "false";
-
                 string evaluacion = "";
 
 

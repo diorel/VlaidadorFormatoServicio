@@ -99,29 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Foto\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\Hemlock\hemlock_1.jpg" />
-    <Content Include="Images\Hemlock\hemlock_10.jpg" />
-    <Content Include="Images\Hemlock\hemlock_2.jpg" />
-    <Content Include="Images\Hemlock\hemlock_3.jpg" />
-    <Content Include="Images\Hemlock\hemlock_4.jpg" />
-    <Content Include="Images\Hemlock\hemlock_5.jpg" />
-    <Content Include="Images\Hemlock\hemlock_6.jpg" />
-    <Content Include="Images\Hemlock\hemlock_7.jpg" />
-    <Content Include="Images\Hemlock\hemlock_8.jpg" />
-    <Content Include="Images\Hemlock\hemlock_9.jpg" />
-    <Content Include="Images\Japanese Cherry\japanese_cherry_1.jpg" />
-    <Content Include="Images\Japanese Cherry\japanese_cherry_10.jpg" />
-    <Content Include="Images\Japanese Cherry\japanese_cherry_2.jpg" />
-    <Content Include="Images\Japanese Cherry\japanese_cherry_3.jpg" />
-    <Content Include="Images\Japanese Cherry\japanese_cherry_4.jpg" />
-    <Content Include="Images\Japanese Cherry\japanese_cherry_5.jpg" />
-    <Content Include="Images\Japanese Cherry\japanese_cherry_6.jpg" />
-    <Content Include="Images\Japanese Cherry\japanese_cherry_7.jpg" />
-    <Content Include="Images\Japanese Cherry\japanese_cherry_8.jpg" />
-    <Content Include="Images\Japanese Cherry\japanese_cherry_9.jpg" />
-    <Content Include="Images\Test\test_image.jpg" />
+    <Folder Include="Images\Identification\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

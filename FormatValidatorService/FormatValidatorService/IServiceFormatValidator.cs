@@ -12,15 +12,9 @@ namespace FormatValidatorService
     [ServiceContract]
     public interface IServiceFormatValidator
     {
-        //[OperationContract]
-        //string VerificarIfe(string Foto);
-
-
+       
         [OperationContract]
-        Task<string> ValidarFormato(string imageFilePath);
-
-
-        
+        Task<string> ValidarFormatoINE(string imageFilePath);
 
     }
  
