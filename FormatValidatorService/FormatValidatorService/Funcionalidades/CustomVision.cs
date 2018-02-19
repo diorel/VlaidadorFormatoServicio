@@ -46,10 +46,8 @@ namespace FormatValidatorService.Funcionalidades
 
 
 
-        public async Task<string> ValidarFormato(string imageFilePath)
+        public async Task<string> ValidarFormatoINE(byte[] ByteArray)
         {
-
-
 
 
             var client = new HttpClient();
@@ -63,9 +61,9 @@ namespace FormatValidatorService.Funcionalidades
             HttpResponseMessage response;
 
             // cuerpo de solicitud Pruebe esta muestra con una imagen almacenada localmente.
-            byte[] byteData = GetImageAsByteArray(imageFilePath);
+           // byte[] byteData = GetImageAsByteArray(imageFilePath);
 
-            using (var content = new ByteArrayContent(byteData))
+            using (var content = new ByteArrayContent(ByteArray))
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                 response = await client.PostAsync(url, content);

@@ -14,7 +14,7 @@ namespace FormatValidatorService
     {
        
         [OperationContract]
-        Task<string> ValidarFormatoINE(string imageFilePath);
+        Task<string> ValidarFormatoINE(byte[] ByteArray);
 
     }
  
