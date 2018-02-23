@@ -18,9 +18,9 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+
+     
         }
-
-
 
         static byte[] GetImageAsByteArray(string imageFilePath)
         {
@@ -30,7 +30,6 @@ namespace WindowsFormsApplication1
         }
 
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             var respuesta = "";
@@ -38,16 +37,63 @@ namespace WindowsFormsApplication1
             using (ServiceReference1.ServiceFormatValidatorClient servicio = new ServiceReference1.ServiceFormatValidatorClient())
             {
 
+                
+               byte[] byteData = GetImageAsByteArray(@"C:\Foto\Gundam1.jpg");
 
-                byte[] byteData = GetImageAsByteArray(@"C:\Foto\Gundam1.jpg");
+                //byte[] byteData = GetImageAsByteArray(@"C:\Foto\ine1.jpg");
 
+               //  byte[] byteData = GetImageAsByteArray(@"C:\Foto\ine6.jpg");
 
-               respuesta = servicio.ValidarFormatoINE(byteData);
+               //  byte[] byteData = GetImageAsByteArray(@"C:\Foto\perro.jpg");
+
+                respuesta = servicio.ValidarFormatoINE(byteData);
 
                 label1.Text = respuesta.ToString();
 
             }
 
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var respuesta = "";
+
+            OpenFileDialog Open = new OpenFileDialog();
+            Open.Filter = "Archivos JPG(*.jpg )|*.jpg";
+            Open.Title = "Archivos JPG";
+            try
+            {
+                if (Open.ShowDialog() == DialogResult.OK)
+                {
+                    textBox1.Text = Open.FileName;
+                    //string imagen = openFileDialog1.FileName;
+
+                    string imagen = Open.FileName;
+                    pictureBox1.Image = Image.FromFile(imagen);
+
+                }
+                Open.Dispose();
+
+                using (ServiceReference1.ServiceFormatValidatorClient servicio = new ServiceReference1.ServiceFormatValidatorClient())
+                {
+                    string ruta = Open.FileName;
+
+                    // byte[] byteData = GetImageAsByteArray(@"C:\Foto\Gundam1.jpg");
+
+                     byte[] byteData = GetImageAsByteArray(@ruta);
+
+                    respuesta = servicio.ValidarFormatoINE(byteData);
+
+                    label1.Text = respuesta.ToString();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.InnerException.Message);
+            }
 
         }
     }
